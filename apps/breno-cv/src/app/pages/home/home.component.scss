@@ -1,0 +1,32 @@
+.content-wrapper {
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  padding: 0px 10px;
+}
+
+.intro {
+  margin: 20px 0px;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.objectives {
+  margin: 10px 0px 0px 10px;
+}
+
+@media (max-width: 700px) {
+  .title {
+    margin-top: 10px;
+  }
+
+  .intro {
+    align-items: center;
+    margin-top: 0px;
+  }
+
+  .objectives {
+    margin: 0px 0px 20px 0px;
+  }
+}

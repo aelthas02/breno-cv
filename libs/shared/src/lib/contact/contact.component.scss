@@ -1,0 +1,27 @@
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.item {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: space-between;
+}
+
+.link {
+  display: flex;
+  gap: 10px;
+  margin: 10px 0px;
+  cursor: pointer;
+}
+
+.align-center {
+  align-items: center;
+  display: flex;
+}
+
+.copy {
+  cursor: pointer;
+}

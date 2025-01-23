@@ -1,0 +1,40 @@
+{
+  "contacts": [
+    {
+      "description": "GITHUB",
+      "icon": "github-circled",
+      "value": "https://github.com/aelthas02/",
+      "copyValue": "https://github.com/aelthas02/"
+    },
+    {
+      "description": "LINKEDIN",
+      "icon": "linkedin-squared",
+      "value": "https://linkedin.com/in/breno-moreira-",
+      "copyValue": "www.linkedin.com/in/breno-moreira-"
+    },
+    {
+      "description": "E-MAIL",
+      "icon": "mail-alt",
+      "value": "breno-moreira@hotmail.com",
+      "copyValue": "breno-moreira@hotmail.com"
+    },
+    {
+      "description": "WHATSAPP",
+      "icon": "whatsapp",
+      "value": "http://wa.me/+5512981353729",
+      "copyValue": "+5512981353729"
+    }
+  ],
+  "objectives": [
+    { "objective": "LOOKING FOR A JOB IN EUROPE (I GOT ITALIAN CITZENSHIP)" },
+    { "objective": "IMPROVE MY KNOWLEDGE IN FRONTEND" },
+    { "objective": "IMPROVE MY KNOWLEDGE IN CLOUD AND DEVOPS" },
+    { "objective": "IMPROVE SOFTSKILLS FOR LEADERSHIP PROFILE" }
+  ],
+  "experiences": [],
+  "skills": [],
+  "education": {
+    "formation": [],
+    "certificates": []
+  }
+}

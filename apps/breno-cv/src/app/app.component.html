@@ -1,2 +1,11 @@
-<app-nx-welcome></app-nx-welcome>
-<router-outlet></router-outlet>
+<div class="header">
+  <bsb-header
+    [label]="'BRENO MOREIRA - FRONTEND DEVELOPER'"
+    [menuOptions]="menuOptions"
+    (click)="goTo($event)"
+  ></bsb-header>
+</div>
+<div [ngClass]="(isMobile$ | async) ? 'pages-mobile' : 'pages'">
+  <router-outlet class="router"></router-outlet>
+  <lib-contact class="contact"></lib-contact>
+</div>

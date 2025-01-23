@@ -1,0 +1,21 @@
+<div class="content-wrapper">
+  <bsb-title class="title" [label]="'Who am I?'"></bsb-title>
+  <div class="intro">
+    <bsb-custom-image
+      [size]="(isMobile$ | async) ? 'md' : 'xxl'"
+      [imgUrl]="
+        'https://media.licdn.com/dms/image/v2/D4D03AQFCczwf5_zHpQ/profile-displayphoto-shrink_800_800/B4DZRwAFw9GUAc-/0/1737045859861?e=1743033600&v=beta&t=qf5gkMzhXKyQ9H-cMyQN_osUT64aEroI58TUozowlp0'
+      "
+    ></bsb-custom-image>
+    <bsb-text
+      [label]="
+        'HERE I PRESENT YOU SOME INFORMATIONS ABOUT  WHO I AM AND SOME OF MY BACKGROUND AS A FRONTEND DEVELOPER. PLEASE, FEEL FREE TO EXPLORE MY ONLINE CV TO KNOW MORE ABOUT MY SKILLS, EXPERIENCES AND EDUCATION. PLEASE DO NOT HESITATE TO USE THE SIDE COLUMN TO CONTACT ME_'
+      "
+    ></bsb-text>
+  </div>
+  <bsb-title [label]="'Personal objectives'"></bsb-title>
+  <bsb-unordered-list
+    class="objectives"
+    [list]="(objectiveList$ | async) || []"
+  ></bsb-unordered-list>
+</div>
