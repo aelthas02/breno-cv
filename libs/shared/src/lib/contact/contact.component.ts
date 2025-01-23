@@ -7,10 +7,9 @@ import {
   TextComponent,
   WindowsSizeService,
 } from 'breno-storybook';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Contact } from '../../interfaces/Contact';
 import { ContactService } from '../../services/contact.service';
-import { response } from 'express';
 
 @Component({
   selector: 'lib-contact',

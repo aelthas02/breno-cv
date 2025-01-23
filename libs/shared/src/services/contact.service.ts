@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class ContactService {
-  private url: string = 'http://localhost:3000/contacts';
+  private url = 'http://localhost:3000/contacts';
 
   private contactListSubject = new BehaviorSubject<Contact[]>([]);
   public contactList$: Observable<Contact[]>;

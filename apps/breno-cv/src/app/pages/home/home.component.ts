@@ -18,7 +18,7 @@ import { ObjectivesService } from '../../services/objectives.service';
     UnorderedListComponent,
     AsyncPipe,
   ],
-  selector: 'home',
+  selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })

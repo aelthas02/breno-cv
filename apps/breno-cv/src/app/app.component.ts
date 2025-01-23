@@ -3,7 +3,7 @@ import { Router, RouterModule } from '@angular/router';
 import { HeaderComponent, WindowsSizeService } from 'breno-storybook';
 import { ContactComponent } from '@breno-cv/shared';
 import { Observable } from 'rxjs';
-import { AsyncPipe, JsonPipe, NgClass } from '@angular/common';
+import { AsyncPipe, NgClass } from '@angular/common';
 
 @Component({
   imports: [

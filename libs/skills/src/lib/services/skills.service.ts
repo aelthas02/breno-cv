@@ -7,7 +7,7 @@ import { Skill, SkillResponse } from '../interfaces/Skill';
   providedIn: 'root',
 })
 export class SkillsService {
-  private url: string = 'http://localhost:3000/skills';
+  private url = 'http://localhost:3000/skills';
 
   private skillListSubject = new BehaviorSubject<SkillResponse[]>([]);
   public skillList$: Observable<SkillResponse[]>;

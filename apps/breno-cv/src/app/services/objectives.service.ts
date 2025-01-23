@@ -7,7 +7,7 @@ import { Objective } from '../interfaces/Objective';
   providedIn: 'root',
 })
 export class ObjectivesService {
-  private url: string = 'http://localhost:3000/objectives';
+  private url = 'http://localhost:3000/objectives';
 
   private objectiveListSubject = new BehaviorSubject<{ item: string }[]>([]);
   public objectiveList$: Observable<{ item: string }[]>;
