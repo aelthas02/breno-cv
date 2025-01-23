@@ -1,4 +1,4 @@
-import { AsyncPipe, JsonPipe } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import {
   CustomImageComponent,
@@ -9,7 +9,6 @@ import {
 } from 'breno-storybook';
 import { Observable } from 'rxjs';
 import { ObjectivesService } from '../../services/objectives.service';
-import { Objective } from '../../interfaces/Objective';
 
 @Component({
   imports: [

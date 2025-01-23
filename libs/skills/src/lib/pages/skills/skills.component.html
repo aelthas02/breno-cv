@@ -1,1 +1,17 @@
-<p>Skills works!</p>
+<div class="content-wrapper">
+  <div class="title">
+    <bsb-icon [icon]="'to-start'" [size]="'default-l'"></bsb-icon>
+    <bsb-title [label]="'SKILLS / KNOWLEDGE'"></bsb-title>
+  </div>
+  @if(skillList$ | async) {
+  <div class="lists">
+    @for(list of (skillList$ | async); track $index) {
+    <bsb-unordered-list
+      [title]="list.type"
+      [titleIcon]="list.icon"
+      [list]="list.items"
+    ></bsb-unordered-list>
+    }
+  </div>
+  }
+</div>

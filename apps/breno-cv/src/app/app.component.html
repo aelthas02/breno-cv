@@ -3,9 +3,12 @@
     [label]="'BRENO MOREIRA - FRONTEND DEVELOPER'"
     [menuOptions]="menuOptions"
     (click)="goTo($event)"
+    (goHome)="goTo('')"
   ></bsb-header>
 </div>
 <div [ngClass]="(isMobile$ | async) ? 'pages-mobile' : 'pages'">
-  <router-outlet class="router"></router-outlet>
+  <div class="router">
+    <router-outlet></router-outlet>
+  </div>
   <lib-contact class="contact"></lib-contact>
 </div>

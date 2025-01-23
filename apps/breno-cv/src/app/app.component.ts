@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { HeaderComponent, WindowsSizeService } from 'breno-storybook';
 import { ContactComponent } from '@breno-cv/shared';
 import { Observable } from 'rxjs';
@@ -20,18 +20,23 @@ import { AsyncPipe, JsonPipe, NgClass } from '@angular/common';
 export class AppComponent {
   public isMobile$: Observable<boolean>;
 
-  public menuOptions: string[] = [
-    'Experiences',
-    'Skills / Knowledge',
-    'Education',
+  public menuOptions: { label: string; route: string }[] = [
+    { label: 'Experiences', route: 'experiences' },
+    { label: 'Skills / Knowledge', route: 'skills' },
+    { label: 'Education', route: 'education' },
   ];
 
-  constructor(private windowSizeService: WindowsSizeService) {
+  constructor(
+    private windowSizeService: WindowsSizeService,
+    private router: Router
+  ) {
     if (typeof window !== 'undefined') {
       this.windowSizeService.setWindowsSize(screen.width);
     }
     this.isMobile$ = this.windowSizeService.isMobile$;
   }
 
-  public goTo(event: string): void {}
+  public goTo(route?: string): void {
+    this.router.navigate([route || '']);
+  }
 }

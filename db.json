@@ -32,7 +32,49 @@
     { "objective": "IMPROVE SOFTSKILLS FOR LEADERSHIP PROFILE" }
   ],
   "experiences": [],
-  "skills": [],
+  "skills": [
+    {
+      "icon": "keyboard",
+      "type": "DEVELOPMENT",
+      "items": [
+        "ANGULAR 2+",
+        "TYPESCRIPT",
+        "RXJS",
+        "JASMINE / KARMA",
+        "BOOTSTRAP / TAILWIND",
+        "STORYBOOK",
+        "MONOREPO WITH Nx"
+      ]
+    },
+    {
+      "icon": "wrench",
+      "type": "TOOLS",
+      "items": [
+        "FIGMA",
+        "VISUAL CODE",
+        "POSTMAN",
+        "GITHUB",
+        "AZURE",
+        "JIRA / TRELLO",
+        "DEVTOOLS"
+      ]
+    },
+    {
+      "icon": "globe",
+      "type": "LANGUAGES",
+      "items": [
+        "PORTUGUESE (NATIVE)",
+        "ENGLISH (ADVANCED)",
+        "ITALIAN (BASIC)",
+        "GERMAN (BASIC)"
+      ]
+    },
+    {
+      "icon": "plus",
+      "type": "OTHER KNOWLEDGES",
+      "items": ["PIPELINE", "CI/CD", "AWS BASICS", "GIT"]
+    }
+  ],
   "education": {
     "formation": [],
     "certificates": []
