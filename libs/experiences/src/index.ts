@@ -1,1 +1,1 @@
-export * from './lib/experiences/experiences.component';
+export * from './lib/lib.routes';

@@ -1,0 +1,19 @@
+<div class="content-wrapper">
+  <div class="title">
+    <bsb-icon
+      class="go-back"
+      [icon]="'to-start'"
+      [size]="'default-l'"
+      (click)="goTo('')"
+    ></bsb-icon>
+    <bsb-title [label]="'Experiences'"></bsb-title>
+  </div>
+  <div class="list">
+    @for(exp of (experienceList$ | async); track $index) {
+    <bsb-collapsible-card
+      [cardContent]="exp"
+      [isCardOpen]="$index === 0"
+    ></bsb-collapsible-card>
+    }
+  </div>
+</div>

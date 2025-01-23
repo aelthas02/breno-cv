@@ -1,6 +1,11 @@
 <div class="content-wrapper">
   <div class="title">
-    <bsb-icon [icon]="'to-start'" [size]="'default-l'"></bsb-icon>
+    <bsb-icon
+      class="go-back"
+      [icon]="'to-start'"
+      [size]="'default-l'"
+      (click)="goTo('')"
+    ></bsb-icon>
     <bsb-title [label]="'SKILLS / KNOWLEDGE'"></bsb-title>
   </div>
   @if(skillList$ | async) {
