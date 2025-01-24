@@ -1,0 +1,21 @@
+.content-wrapper {
+  padding: 0px 10px;
+}
+
+.go-back {
+  cursor: pointer;
+}
+
+.title {
+  margin: 20px 0px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 20px;
+}

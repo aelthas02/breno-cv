@@ -144,7 +144,60 @@
     }
   ],
   "education": {
-    "formation": [],
-    "certificates": []
+    "formation": [
+      {
+        "title": "[MBA] CLOUD COMPUTING & DEVOPS",
+        "listContent": [
+          {
+            "item": "IMPACTA TECNOLOGIA - Apr 2023 -> Fev 2024",
+            "subitem": "Activities: Cloud Computing with AWS, Development of pipelines using GitHub Actions and knowledge of DevOps concepts. Developed skills / knowledge: DevOps, Cloud Computing and Pipelines"
+          }
+        ]
+      },
+      {
+        "title": "[BACHELOR] COMPUTER ENGINEERING",
+        "listContent": [
+          {
+            "item": "ETEP FACULDADES - Jan 2014 -> Dez 2018",
+            "subitem": "Activities: Course conclusion work consists of an arduino prototype for outlet energy consumption monitoring, using an developed android app and cloud data service. The idea is to explore the concept of internet of things."
+          }
+        ]
+      },
+      {
+        "title": "[TECHNICIAN] COMPUTER TECHNICIAN",
+        "listContent": [
+          {
+            "item": "COLÉGIO TÉCNICO ETEP - Jan 2009 -> Dez 2011",
+            "subitem": "Activities: The project automatizes a cinema. Developed skills / knowledge: Hardware, software development, network, computer concepts and science"
+          }
+        ]
+      }
+    ],
+    "certificates": [
+      {
+        "label": "AWS ACADEMY CLOUD FOUNDATIONS",
+        "certificateUrl": "https://www.credly.com/badges/92d4520c-a216-41e7-ae6b-dd1db63b3bac/public_url"
+      },
+      {
+        "label": "ANGULAR 14 WITH RXJS",
+        "certificateUrl": "https://www.udemy.com/certificate/UC-88966ec3-1439-4d77-9b46-6e638fee1c7f/"
+      },
+      {
+        "label": "ANGULAR 14 TESTING",
+        "certificateUrl": "https://www.udemy.com/certificate/UC-45d98223-0ebb-416b-9c13-8585a0739d8e/"
+      },
+      {
+        "label": "MONGO BASICS",
+        "certificateUrl": "https://university.mongodb.com/course_completion/9f8b58bb-59dd-4177-877f-e6d2e3081e12"
+      },
+      {
+        "label": "RESPONSIVE WEBDESIGN",
+        "certificateUrl": "https://www.freecodecamp.org/certification/aelthas02/responsive-web-design"
+      },
+      {
+        "label": "JS ALGORITHMS AND DATA STRUCTURE",
+        "certificateUrl": "https://www.freecodecamp.org/certification/aelthas02/javascript-algorithms-and-data-structures"
+      }
+    ]
   }
 }

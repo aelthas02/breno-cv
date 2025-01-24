@@ -1,1 +1,1 @@
-export * from './lib/education/education.component';
+export * from './lib/lib.routes';

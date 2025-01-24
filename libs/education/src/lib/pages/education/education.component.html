@@ -1,0 +1,30 @@
+<div class="content-wrapper">
+  <div class="title">
+    <bsb-icon
+      class="go-back"
+      [icon]="'to-start'"
+      [size]="'default-l'"
+      (click)="goTo('')"
+    ></bsb-icon>
+    <bsb-title [label]="'Education'"></bsb-title>
+  </div>
+  <div class="list">
+    <bsb-subtitle [label]="'Formation'"></bsb-subtitle>
+
+    @for(formation of (formationList$ | async); track $index) {
+    <bsb-collapsible-card
+      [cardContent]="formation"
+      [isCardOpen]="$index === 0"
+    ></bsb-collapsible-card>
+    }
+    <bsb-subtitle [label]="'Certificates'"></bsb-subtitle>
+
+    @for(certificate of (certificateList$ | async); track $index) {
+    <bsb-stripe
+      [label]="certificate.label"
+      [enableCredentialButton]="true"
+      [credentialUrl]="certificate.certificateUrl"
+    ></bsb-stripe>
+    }
+  </div>
+</div>
