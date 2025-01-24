@@ -1,12 +1,14 @@
 {
   "name": "@breno-cv/source",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "license": "MIT",
   "scripts": {
     "dev": "npx nx serve breno-cv",
     "server": "json-server --watch db.json",
+    "lint": "npx nx run-many -all --target=lint --skip-nx-cache",
     "test": "npx nx run-many --all --target=test --parallel",
-    "build": "npx nx build breno-cv"
+    "build": "npx nx build breno-cv",
+    "build:all": "npx nx run-many --target=build --parallel --skip-nx-cache"
   },
   "private": true,
   "dependencies": {
