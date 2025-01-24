@@ -4,7 +4,9 @@
   "license": "MIT",
   "scripts": {
     "dev": "npx nx serve breno-cv",
-    "server": "json-server --watch db.json"
+    "server": "json-server --watch db.json",
+    "test": "npx nx run-many --all --target=test --parallel",
+    "build": "npx nx build breno-cv"
   },
   "private": true,
   "dependencies": {
