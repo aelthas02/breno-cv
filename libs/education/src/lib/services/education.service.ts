@@ -7,7 +7,7 @@ import { Certificate, Education, Formation } from '../interfaces/Education';
   providedIn: 'root',
 })
 export class EducationService {
-  private url = 'http://localhost:3000/education';
+  private url = 'https://breno-cv-server.vercel.app/education';
 
   private formationListSubject = new BehaviorSubject<Formation[]>([]);
   public formationList$: Observable<Formation[]>;

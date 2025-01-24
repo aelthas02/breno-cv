@@ -7,7 +7,7 @@ import { Experience } from '../interfaces/Experience';
   providedIn: 'root',
 })
 export class ExperienceService {
-  private url = 'http://localhost:3000/experiences';
+  private url = 'https://breno-cv-server.vercel.app/experiences';
 
   private experienceListSubject = new BehaviorSubject<Experience[]>([]);
   public experienceList$: Observable<Experience[]>;

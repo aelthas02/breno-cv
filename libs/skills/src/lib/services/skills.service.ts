@@ -7,7 +7,7 @@ import { Skill, SkillResponse } from '../interfaces/Skill';
   providedIn: 'root',
 })
 export class SkillsService {
-  private url = 'http://localhost:3000/skills';
+  private url = 'https://breno-cv-server.vercel.app/skills';
 
   private skillListSubject = new BehaviorSubject<SkillResponse[]>([]);
   public skillList$: Observable<SkillResponse[]>;
