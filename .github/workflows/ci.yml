@@ -11,20 +11,6 @@ permissions:
   contents: read
 
 jobs:
-  checkup:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Install deps
-        run: npm i
-
-      - name: Linting
-        run: npm run lint
-
-      - name: Build apps and libs
-        run: npm run build:all
   main:
     runs-on: ubuntu-latest
     steps:
@@ -45,7 +31,7 @@ jobs:
           cache: 'npm'
 
       - run: npm ci --legacy-peer-deps
-      # - run: npx cypress install
+      - run: npx cypress install
       - uses: nrwl/nx-set-shas@v4
 
       # Prepend any command with "nx-cloud record --" to record its logs to Nx Cloud
