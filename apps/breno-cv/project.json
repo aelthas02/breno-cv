@@ -8,7 +8,7 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:application",
-      "outputs": ["{dist/apps/breno-cv}"],
+      "output": "dist/apps/breno-cv",
       "options": {
         "outputPath": "dist/apps/breno-cv",
         "index": "apps/breno-cv/src/index.html",
