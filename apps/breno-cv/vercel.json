@@ -9,5 +9,5 @@
       }
     }
   ],
-  "routes": [{ "src": "/(.*)", "dest": "/prerendered-routes.json" }]
+  "routes": [{ "src": "/(.*)", "dest": "/index.html" }]
 }
