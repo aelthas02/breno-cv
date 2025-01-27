@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "apps/breno-cv/**",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist/apps/breno-cv"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ]
+}
