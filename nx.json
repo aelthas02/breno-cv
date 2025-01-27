@@ -1,4 +1,11 @@
 {
+  "projects": {
+    "breno-cv": {
+      "root": "apps/breno-cv",
+      "sourceRoot": "apps/breno-cv/src",
+      "projectType": "application"
+    }
+  },
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
   "defaultBase": "master",
   "namedInputs": {
