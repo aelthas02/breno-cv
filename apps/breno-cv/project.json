@@ -8,10 +8,10 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:application",
-      "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/breno-cv",
         "index": "apps/breno-cv/src/index.html",
+        "main": "apps/breno-cv/src/main.ts",
         "browser": "apps/breno-cv/src/main.ts",
         "polyfills": ["zone.js"],
         "tsConfig": "apps/breno-cv/tsconfig.app.json",
