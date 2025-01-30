@@ -28,3 +28,10 @@
   align-content: center;
   flex-wrap: wrap;
 }
+
+@media (max-width: 700px) {
+  .loading {
+    height: 75vh;
+    margin-bottom: 8px;
+  }
+}
