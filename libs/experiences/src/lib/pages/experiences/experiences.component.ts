@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import {
   CollapsibleCardComponent,
   IconComponent,
+  LoadingComponent,
   TitleComponent,
 } from 'breno-storybook';
 import { Router } from '@angular/router';
@@ -17,21 +18,21 @@ import { ExperienceService } from '../../services/experiences.service';
     IconComponent,
     TitleComponent,
     CollapsibleCardComponent,
+    LoadingComponent,
   ],
   templateUrl: './experiences.component.html',
   styleUrl: './experiences.component.scss',
 })
-export class ExperiencesComponent implements OnInit {
+export class ExperiencesComponent {
   public experienceList$: Observable<Experience[]>;
+  public loading$: Observable<boolean>;
 
   constructor(
     private router: Router,
     private experiencesService: ExperienceService
   ) {
     this.experienceList$ = this.experiencesService.experienceList$;
-  }
-
-  ngOnInit(): void {
+    this.loading$ = this.experiencesService.loading$;
     this.experiencesService.getExperienceList().subscribe();
   }
 

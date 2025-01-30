@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import {
   CollapsibleCardComponent,
   IconComponent,
+  LoadingComponent,
   StripeComponent,
   SubtitleComponent,
   TitleComponent,
@@ -21,23 +22,23 @@ import { Router } from '@angular/router';
     SubtitleComponent,
     CollapsibleCardComponent,
     StripeComponent,
+    LoadingComponent,
   ],
   templateUrl: './education.component.html',
   styleUrl: './education.component.scss',
 })
-export class EducationComponent implements OnInit {
+export class EducationComponent {
   public formationList$: Observable<Formation[]>;
   public certificateList$: Observable<Certificate[]>;
+  public loading$: Observable<boolean>;
 
   constructor(
     private educationService: EducationService,
     private router: Router
   ) {
+    this.loading$ = this.educationService.loading$;
     this.formationList$ = this.educationService.formationList$;
     this.certificateList$ = this.educationService.certificateList$;
-  }
-
-  ngOnInit(): void {
     this.educationService.getEducationList().subscribe();
   }
 
