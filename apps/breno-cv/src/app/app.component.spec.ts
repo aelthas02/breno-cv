@@ -1,22 +1,31 @@
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { provideRouter, Router } from '@angular/router';
+import { of } from 'rxjs';
 import { WindowsSizeService } from 'breno-cv-storybook';
+
+import { ContactService } from '../../../../libs/shared/src/services/contact.service';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     // Dá ao componente os dependentes mínimos para não falhar por serviços externos.
     const windowSizeService = {
-      isMobile$: { subscribe: jest.fn() },
+      isMobile$: of(false),
       setWindowsSize: jest.fn(),
     } as unknown as WindowsSizeService;
+
+    const contactService = {
+      getContactList: jest.fn().mockReturnValue(of([])),
+      contactList$: of([]),
+    } as unknown as ContactService;
 
     // Configura o componente para um teste isolado e sem depender do template externo completo.
     await TestBed.configureTestingModule({
       imports: [AppComponent],
       providers: [
         { provide: WindowsSizeService, useValue: windowSizeService },
+        { provide: ContactService, useValue: contactService },
         provideRouter([]),
       ],
       schemas: [NO_ERRORS_SCHEMA],
