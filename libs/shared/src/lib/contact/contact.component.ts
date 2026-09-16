@@ -6,7 +6,7 @@ import {
   IconComponent,
   TextComponent,
   WindowsSizeService,
-} from 'breno-storybook';
+} from 'breno-cv-storybook';
 import { Observable } from 'rxjs';
 import { Contact } from '../../interfaces/Contact';
 import { ContactService } from '../../services/contact.service';

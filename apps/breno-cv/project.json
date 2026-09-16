@@ -20,6 +20,11 @@
           {
             "glob": "**/*",
             "input": "apps/breno-cv/public"
+          },
+          {
+            "glob": "**/*",
+            "input": "apps/breno-cv/src/img",
+            "output": "assets/img"
           }
         ],
         "styles": ["apps/breno-cv/src/styles.scss"],

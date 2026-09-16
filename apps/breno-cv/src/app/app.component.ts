@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
-import { HeaderComponent, WindowsSizeService } from 'breno-storybook';
+import { HeaderComponent, WindowsSizeService } from 'breno-cv-storybook';
 import { ContactComponent } from '@breno-cv/shared';
 import { Observable } from 'rxjs';
 import { AsyncPipe, NgClass } from '@angular/common';

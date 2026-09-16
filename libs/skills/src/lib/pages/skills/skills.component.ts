@@ -5,7 +5,7 @@ import {
   LoadingComponent,
   TitleComponent,
   UnorderedListComponent,
-} from 'breno-storybook';
+} from 'breno-cv-storybook';
 import { Observable } from 'rxjs';
 import { SkillResponse } from '../../interfaces/Skill';
 import { SkillsService } from '../../services/skills.service';

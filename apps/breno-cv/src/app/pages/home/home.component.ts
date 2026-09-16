@@ -1,12 +1,12 @@
 import { AsyncPipe } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import {
   CustomImageComponent,
   TextComponent,
   TitleComponent,
   UnorderedListComponent,
   WindowsSizeService,
-} from 'breno-storybook';
+} from 'breno-cv-storybook';
 import { Observable } from 'rxjs';
 import { ObjectivesService } from '../../services/objectives.service';
 
@@ -23,16 +23,11 @@ import { ObjectivesService } from '../../services/objectives.service';
   styleUrl: './home.component.scss',
 })
 export class HomeComponent implements OnInit {
-  public isMobile$: Observable<boolean>;
-  public objectiveList$: Observable<{ item: string }[]>;
+  private readonly windowSizeService = inject(WindowsSizeService)
+  private readonly objectiveService = inject(ObjectivesService);
 
-  constructor(
-    private windowSizeService: WindowsSizeService,
-    private objectiveService: ObjectivesService
-  ) {
-    this.isMobile$ = this.windowSizeService.isMobile$;
-    this.objectiveList$ = this.objectiveService.objectiveList$;
-  }
+  public isMobile$: Observable<boolean> = this.windowSizeService.isMobile$;
+  public objectiveList$: Observable<{ item: string }[]> = this.objectiveService.objectiveList$;
 
   ngOnInit(): void {
     this.objectiveService.getobjectiveList().subscribe();

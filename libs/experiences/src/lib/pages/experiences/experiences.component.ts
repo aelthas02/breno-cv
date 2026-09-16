@@ -5,7 +5,7 @@ import {
   IconComponent,
   LoadingComponent,
   TitleComponent,
-} from 'breno-storybook';
+} from 'breno-cv-storybook';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Experience } from '../../interfaces/Experience';

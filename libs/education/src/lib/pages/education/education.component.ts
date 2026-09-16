@@ -7,7 +7,7 @@ import {
   StripeComponent,
   SubtitleComponent,
   TitleComponent,
-} from 'breno-storybook';
+} from 'breno-cv-storybook';
 import { Observable } from 'rxjs';
 import { Certificate, Formation } from '../../interfaces/Education';
 import { EducationService } from '../../services/education.service';
