@@ -10,6 +10,8 @@ import { Observable } from 'rxjs';
 import { SkillResponse } from '../../interfaces/Skill';
 import { SkillsService } from '../../services/skills.service';
 import { Router } from '@angular/router';
+import { DestroyRef, inject } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'lib-skills',
@@ -24,13 +26,17 @@ import { Router } from '@angular/router';
   styleUrl: './skills.component.scss',
 })
 export class SkillsComponent {
-  public skillList$: Observable<SkillResponse[]>;
-  public loading$: Observable<boolean>;
+  private readonly skillService = inject(SkillsService);
+  private readonly router = inject(Router);
+  private readonly destroyRef = inject(DestroyRef);
 
-  constructor(private skillService: SkillsService, private router: Router) {
-    this.skillList$ = this.skillService.skillList$;
-    this.loading$ = this.skillService.loading$;
-    this.skillService.getSkillsList().subscribe();
+  public skillList$: Observable<SkillResponse[]> = this.skillService.skillList$;;
+  public loading$: Observable<boolean> = this.skillService.loading$;
+
+  constructor() {
+    this.skillService.getSkillsList().pipe(
+      takeUntilDestroyed(this.destroyRef)
+    ).subscribe();
   }
 
   public goTo(route: string): void {

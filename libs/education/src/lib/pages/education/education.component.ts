@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, DestroyRef, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   CollapsibleCardComponent,
@@ -12,6 +12,7 @@ import { Observable } from 'rxjs';
 import { Certificate, Formation } from '../../interfaces/Education';
 import { EducationService } from '../../services/education.service';
 import { Router } from '@angular/router';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'lib-education',
@@ -28,21 +29,24 @@ import { Router } from '@angular/router';
   styleUrl: './education.component.scss',
 })
 export class EducationComponent {
-  public formationList$: Observable<Formation[]>;
-  public certificateList$: Observable<Certificate[]>;
-  public loading$: Observable<boolean>;
+  private readonly educationService = inject(EducationService);
+  private readonly router = inject(Router);
+  private readonly destroyRef = inject(DestroyRef);
+
+
+  public formationList$: Observable<Formation[]> = this.educationService.formationList$;;
+  public certificateList$: Observable<Certificate[]> = this.educationService.certificateList$;;
+  public loading$: Observable<boolean> = this.educationService.loading$;;
 
   constructor(
-    private educationService: EducationService,
-    private router: Router
   ) {
-    this.loading$ = this.educationService.loading$;
-    this.formationList$ = this.educationService.formationList$;
-    this.certificateList$ = this.educationService.certificateList$;
-    this.educationService.getEducationList().subscribe();
+    this.educationService.getEducationList().pipe(
+      takeUntilDestroyed(this.destroyRef)
+    ).subscribe();
   }
 
   public goTo(route: string): void {
     this.router.navigate([route]);
   }
 }
+

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, DestroyRef, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   CollapsibleCardComponent,
@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Experience } from '../../interfaces/Experience';
 import { ExperienceService } from '../../services/experiences.service';
-
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 @Component({
   selector: 'lib-experiences',
   imports: [
@@ -24,16 +24,18 @@ import { ExperienceService } from '../../services/experiences.service';
   styleUrl: './experiences.component.scss',
 })
 export class ExperiencesComponent {
-  public experienceList$: Observable<Experience[]>;
-  public loading$: Observable<boolean>;
+  private readonly router = inject(Router);
+  private readonly experiencesService = inject(ExperienceService);
+  private readonly destroyRef = inject(DestroyRef);
+
+  public experienceList$: Observable<Experience[]> = this.experiencesService.experienceList$;;
+  public loading$: Observable<boolean> = this.experiencesService.loading$;;
 
   constructor(
-    private router: Router,
-    private experiencesService: ExperienceService
   ) {
-    this.experienceList$ = this.experiencesService.experienceList$;
-    this.loading$ = this.experiencesService.loading$;
-    this.experiencesService.getExperienceList().subscribe();
+    this.experiencesService.getExperienceList().pipe(
+      takeUntilDestroyed(this.destroyRef)
+    ).subscribe();
   }
 
   public goTo(route: string): void {
