@@ -1,31 +1,27 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable, signal, WritableSignal } from '@angular/core';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Experience } from '../interfaces/Experience';
+import { ExperienceRepository } from '../interfaces/Experience.repository';
 
 @Injectable({
   providedIn: 'root',
 })
-export class ExperienceService {
+export class ExperienceService implements ExperienceRepository {
+  private readonly http = inject(HttpClient);
   private url = 'https://breno-cv-server.vercel.app/experiences';
 
-  private loadingSubject = new BehaviorSubject<boolean>(false);
-  public loading$: Observable<boolean>;
+  public readonly loading: WritableSignal<boolean> = signal<boolean>(false);
 
   private experienceListSubject = new BehaviorSubject<Experience[]>([]);
-  public experienceList$: Observable<Experience[]>;
-
-  constructor(private http: HttpClient) {
-    this.experienceList$ = this.experienceListSubject.asObservable().pipe();
-    this.loading$ = this.loadingSubject.asObservable().pipe();
-  }
+  public experienceList$: Observable<Experience[]> = this.experienceListSubject.asObservable();
 
   public getExperienceList(): Observable<Experience[]> {
-    this.loadingSubject.next(true);
+    this.loading.set(true);
     return this.http.get<Experience[]>(this.url).pipe(
       tap((experienceList) => {
         this.experienceListSubject.next(experienceList);
-        this.loadingSubject.next(false);
+        this.loading.set(false);
         return experienceList;
       })
     );

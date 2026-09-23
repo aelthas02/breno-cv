@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   IconComponent,
@@ -24,6 +24,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
   ],
   templateUrl: './skills.component.html',
   styleUrl: './skills.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SkillsComponent {
   private readonly skillService = inject(SkillsService);

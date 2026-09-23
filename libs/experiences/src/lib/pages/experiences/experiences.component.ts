@@ -1,4 +1,4 @@
-import { Component, DestroyRef, inject, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   CollapsibleCardComponent,
@@ -9,8 +9,9 @@ import {
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Experience } from '../../interfaces/Experience';
-import { ExperienceService } from '../../services/experiences.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { EXPERIENCES_SERVICE } from '../../interfaces/Experience.repository';
+import { ExperienceService } from '../../services/experiences.service';
 @Component({
   selector: 'lib-experiences',
   imports: [
@@ -20,20 +21,22 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
     CollapsibleCardComponent,
     LoadingComponent,
   ],
+  providers: [{ provide: EXPERIENCES_SERVICE, useClass: ExperienceService }],
   templateUrl: './experiences.component.html',
   styleUrl: './experiences.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ExperiencesComponent {
   private readonly router = inject(Router);
-  private readonly experiencesService = inject(ExperienceService);
+  private readonly experiencesRepository = inject(EXPERIENCES_SERVICE);
   private readonly destroyRef = inject(DestroyRef);
 
-  public experienceList$: Observable<Experience[]> = this.experiencesService.experienceList$;;
-  public loading$: Observable<boolean> = this.experiencesService.loading$;;
+  public experienceList$: Observable<Experience[]> = this.experiencesRepository.experienceList$;
+  public loading: boolean = this.experiencesRepository.loading();
 
   constructor(
   ) {
-    this.experiencesService.getExperienceList().pipe(
+    this.experiencesRepository.getExperienceList().pipe(
       takeUntilDestroyed(this.destroyRef)
     ).subscribe();
   }

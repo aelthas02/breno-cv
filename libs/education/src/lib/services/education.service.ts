@@ -1,37 +1,33 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable, signal, WritableSignal } from '@angular/core';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Certificate, Education, Formation } from '../interfaces/Education';
+import { EducationRepository } from '../repositories/Education.repository';
 
 @Injectable({
   providedIn: 'root',
 })
-export class EducationService {
+export class EducationService implements EducationRepository {
+  private readonly http = inject(HttpClient);
   private url = 'https://breno-cv-server.vercel.app/education';
 
-  private loadingSubject = new BehaviorSubject<boolean>(false);
-  public loading$: Observable<boolean>;
+  public readonly loading: WritableSignal<boolean> = signal<boolean>(false);
 
   private formationListSubject = new BehaviorSubject<Formation[]>([]);
-  public formationList$: Observable<Formation[]>;
+  public formationList$: Observable<Formation[]> = this.formationListSubject.asObservable();
 
   private certificateListSubject = new BehaviorSubject<Certificate[]>([]);
-  public certificateList$: Observable<Certificate[]>;
+  public certificateList$: Observable<Certificate[]> = this.certificateListSubject.asObservable();
 
-  constructor(private http: HttpClient) {
-    this.formationList$ = this.formationListSubject.asObservable().pipe();
-    this.certificateList$ = this.certificateListSubject.asObservable().pipe();
-    this.loading$ = this.loadingSubject.asObservable().pipe();
-  }
 
   public getEducationList(): Observable<Education> {
-    this.loadingSubject.next(true);
+    this.loading.set(true);
     return this.http.get<Education>(this.url).pipe(
       tap((educationList) => {
         educationList.formation.forEach((x) => (x.skills = []));
         this.formationListSubject.next(educationList.formation);
         this.certificateListSubject.next(educationList.certificates);
-        this.loadingSubject.next(false);
+        this.loading.set(false);
         return educationList;
       })
     );

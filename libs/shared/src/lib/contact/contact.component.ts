@@ -9,8 +9,9 @@ import {
 } from 'breno-cv-storybook';
 import { Observable } from 'rxjs';
 import { Contact } from '../../interfaces/Contact';
-import { ContactService } from '../../services/contact.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { CONTACT_SERVICE } from '../../interfaces/Contact.repository';
+import { ContactService } from '../../services/contact.service';
 
 @Component({
   selector: 'lib-contact',
@@ -21,12 +22,13 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
     TextComponent,
     AsyncPipe,
   ],
+  providers: [{ provide: CONTACT_SERVICE, useClass: ContactService }],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss',
 })
 export class ContactComponent implements OnInit {
   private readonly windowSizeService = inject(WindowsSizeService);
-  private readonly contactService = inject(ContactService);
+  private readonly contactService = inject(CONTACT_SERVICE);
   private readonly destroyRef = inject(DestroyRef);
 
   public isMobile$: Observable<boolean> = this.windowSizeService.isMobile$;

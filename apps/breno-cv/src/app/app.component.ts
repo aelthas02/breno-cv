@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { HeaderComponent, WindowsSizeService } from 'breno-cv-storybook';
 import { ContactComponent } from '@breno-cv/shared';
@@ -16,6 +16,7 @@ import { AsyncPipe, NgClass } from '@angular/common';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
   public isMobile$: Observable<boolean>;
