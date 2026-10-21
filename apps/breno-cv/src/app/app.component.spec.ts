@@ -1,5 +1,6 @@
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
+import { provideHttpClient } from '@angular/common/http';
 import { provideRouter, Router } from '@angular/router';
 import { of } from 'rxjs';
 import { WindowsSizeService } from 'breno-cv-storybook';
@@ -26,6 +27,7 @@ describe('AppComponent', () => {
       providers: [
         { provide: WindowsSizeService, useValue: windowSizeService },
         { provide: ContactService, useValue: contactService },
+        provideHttpClient(),
         provideRouter([]),
       ],
       schemas: [NO_ERRORS_SCHEMA],
@@ -49,5 +51,15 @@ describe('AppComponent', () => {
 
     // Verifica que a navegação foi disparada com a rota correta.
     expect(navigateSpy).toHaveBeenCalledWith(['skills']);
+  });
+
+  it('should ignore DOM click events in goTo', () => {
+    const router = TestBed.inject(Router);
+    const navigateSpy = jest.spyOn(router, 'navigate');
+    const fixture = TestBed.createComponent(AppComponent);
+
+    fixture.componentInstance.goTo(new Event('click'));
+
+    expect(navigateSpy).not.toHaveBeenCalled();
   });
 });
