@@ -38,6 +38,18 @@ export class AppComponent {
       this.windowSizeService.setWindowsSize(screen.width);
     }
     this.isMobile$ = this.windowSizeService.isMobile$;
+    this.setMetaData();
+  }
+
+  public goTo(route: string | Event = ''): void {
+    if (typeof route !== 'string') {
+      return;
+    }
+
+    this.router.navigate([route]);
+  }
+
+  private setMetaData(): void {
     this.title.setTitle(
       'CV | Breno M. Ambrosio'
     );
@@ -47,13 +59,5 @@ export class AppComponent {
       content:
         'Welcome to my online CV. Feel free to learn more about my profile and do not hesitate to contact me!'
     });
-  }
-
-  public goTo(route: string | Event = ''): void {
-    if (typeof route !== 'string') {
-      return;
-    }
-
-    this.router.navigate([route]);
   }
 }
