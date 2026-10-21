@@ -53,11 +53,15 @@ export class AppComponent {
     this.title.setTitle(
       'CV | Breno M. Ambrosio'
     );
-
     this.meta.updateTag({
       name: 'description',
       content:
-        'Welcome to my online CV. Feel free to learn more about my profile, skills and do not hesitate to contact me!'
+        'Senior Angular developer | RxJs | Signals | Nx | Storybook'
+    });
+    this.meta.updateTag({
+      name: 'keywords',
+      content:
+        'Frontend, Angular, RxJs, Signals, Nx, Storybook'
     });
   }
 }
