@@ -59,11 +59,5 @@ export class AppComponent {
       content:
         'Welcome to my online CV. Feel free to learn more about my profile and do not hesitate to contact me!'
     });
-
-    this.meta.updateTag({
-      name: 'google-site-verification',
-      content:
-        'A-yferXY4GoFqqrJhtr6mnTJLK7yJrI0pNG0afSJRNA'
-    });
   }
 }
