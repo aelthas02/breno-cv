@@ -57,7 +57,7 @@ export class AppComponent {
     this.meta.updateTag({
       name: 'description',
       content:
-        'Welcome to my online CV. Feel free to learn more about my profile and do not hesitate to contact me!'
+        'Welcome to my online CV. Feel free to learn more about my profile, skills and do not hesitate to contact me!'
     });
   }
 }
