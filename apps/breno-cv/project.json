@@ -8,12 +8,16 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:application",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/breno-cv",
         "index": "apps/breno-cv/src/index.html",
         "browser": "apps/breno-cv/src/main.ts",
-        "polyfills": ["zone.js"],
+        "polyfills": [
+          "zone.js"
+        ],
         "tsConfig": "apps/breno-cv/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [
@@ -25,9 +29,16 @@
             "glob": "**/*",
             "input": "apps/breno-cv/src/img",
             "output": "assets/img"
+          },
+          {
+            "glob": "**/*",
+            "input": "apps/breno-cv/src/app/assets",
+            "output": "assets/"
           }
         ],
-        "styles": ["apps/breno-cv/src/styles.scss"],
+        "styles": [
+          "apps/breno-cv/src/styles.scss"
+        ],
         "scripts": [],
         "server": "apps/breno-cv/src/main.server.ts",
         "ssr": {
@@ -82,7 +93,9 @@
     },
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "outputs": [
+        "{workspaceRoot}/coverage/{projectRoot}"
+      ],
       "options": {
         "jestConfig": "apps/breno-cv/jest.config.ts"
       }
