@@ -3,14 +3,16 @@
   <div class="content-wrapper">
     @for(item of (contactList$ | async); track $index) {
     <div class="item">
-      <div class="link" (click)="openContact(item.value)">
+      <button class="link" type="button" (click)="openContact(item.value)">
         <bsb-icon [icon]="item.icon" [color]="orangeColor" [size]="'default-xl'"></bsb-icon>
         <bsb-text class="align-center" [label]="item.description" [color]="orangeColor"
           [fontWeight]="'bold'"></bsb-text>
-      </div>
+      </button>
       @if(item.copyValue) {
-      <bsb-icon class="align-center copy" [icon]="'docs'" [color]="orangeColor" [size]="'default-sm'"
-        (click)="copyToClipboard(item.copyValue)"></bsb-icon>
+      <button class="copy" type="button" (click)="copyToClipboard(item.copyValue)">
+        <bsb-icon class="align-center" [icon]="'docs'" [color]="orangeColor"
+          [size]="'default-sm'"></bsb-icon>
+      </button>
       }
     </div>
     }

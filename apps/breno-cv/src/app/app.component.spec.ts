@@ -5,7 +5,7 @@ import { provideRouter, Router } from '@angular/router';
 import { of } from 'rxjs';
 import { WindowsSizeService } from 'breno-cv-storybook';
 
-import { ContactService } from '../../../../libs/shared/src/services/contact.service';
+import { CONTACT_SERVICE, ContactRepository } from '@breno-cv/shared';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
@@ -19,14 +19,14 @@ describe('AppComponent', () => {
     const contactService = {
       getContactList: jest.fn().mockReturnValue(of([])),
       contactList$: of([]),
-    } as unknown as ContactService;
+    } satisfies ContactRepository;
 
     // Configura o componente para um teste isolado e sem depender do template externo completo.
     await TestBed.configureTestingModule({
       imports: [AppComponent],
       providers: [
         { provide: WindowsSizeService, useValue: windowSizeService },
-        { provide: ContactService, useValue: contactService },
+        { provide: CONTACT_SERVICE, useValue: contactService },
         provideHttpClient(),
         provideRouter([]),
       ],

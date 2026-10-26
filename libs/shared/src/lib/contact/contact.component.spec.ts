@@ -2,7 +2,10 @@ import { of } from 'rxjs';
 import { WindowsSizeService } from 'breno-cv-storybook';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ContactService } from '../../services/contact.service';
+import {
+  CONTACT_SERVICE,
+  ContactRepository,
+} from '../../interfaces/Contact.repository';
 import { ContactComponent } from './contact.component';
 
 describe('ContactComponent', () => {
@@ -14,7 +17,7 @@ describe('ContactComponent', () => {
     const contactServiceMock = {
       getContactList: jest.fn().mockReturnValue(of([])),
       contactList$: of([]),
-    } as unknown as jest.Mocked<ContactService>;
+    } as jest.Mocked<ContactRepository>;
 
     // Prepara o serviço de responsividade para evitar dependências do ambiente real.
     const windowSizeServiceMock = {
@@ -22,13 +25,18 @@ describe('ContactComponent', () => {
     } as unknown as jest.Mocked<WindowsSizeService>;
 
     // Configura o componente standalone com dependências mínimas para o teste de criação.
-    await TestBed.configureTestingModule({
+    TestBed.configureTestingModule({
       imports: [ContactComponent],
       providers: [
-        { provide: ContactService, useValue: contactServiceMock },
         { provide: WindowsSizeService, useValue: windowSizeServiceMock },
       ],
-    }).compileComponents();
+    });
+    TestBed.overrideComponent(ContactComponent, {
+      set: {
+        providers: [{ provide: CONTACT_SERVICE, useValue: contactServiceMock }],
+      },
+    });
+    await TestBed.compileComponents();
 
     fixture = TestBed.createComponent(ContactComponent);
     component = fixture.componentInstance;
