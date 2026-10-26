@@ -10,6 +10,10 @@ permissions:
   actions: read
   contents: read
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
   main:
     runs-on: ubuntu-latest
@@ -30,3 +34,30 @@ jobs:
 
       # Nx Affected runs only tasks affected by the changes in this PR/commit. Learn more: https://nx.dev/ci/features/affected
       - run: npx nx affected -t lint test build e2e
+
+      - name: Build site for GitHub Pages
+        run: npx nx build breno-cv --base-href="/${{ github.event.repository.name }}/"
+
+      - name: Prepare SPA fallback
+        run: cp dist/apps/breno-cv/browser/index.html dist/apps/breno-cv/browser/404.html
+
+      - name: Upload GitHub Pages artifact
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist/apps/breno-cv/browser
+
+  deploy:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+    needs: main
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
