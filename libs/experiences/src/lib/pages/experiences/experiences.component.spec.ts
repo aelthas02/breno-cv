@@ -1,8 +1,12 @@
 import { provideRouter } from '@angular/router';
 import { of } from 'rxjs';
+import { signal } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ExperienceService } from '../../services/experiences.service';
+import {
+  EXPERIENCES_SERVICE,
+  ExperienceRepository,
+} from '../../interfaces/Experience.repository';
 import { ExperiencesComponent } from './experiences.component';
 
 describe('ExperiencesComponent', () => {
@@ -14,17 +18,21 @@ describe('ExperiencesComponent', () => {
     const experienceServiceMock = {
       getExperienceList: jest.fn().mockReturnValue(of([])),
       experienceList$: of([]),
-      loading$: of(false),
-    } as unknown as jest.Mocked<ExperienceService>;
+      loading: signal(false),
+    } satisfies ExperienceRepository;
 
-    // Configura o componente standalone com roteamento e serviço mockado.
-    await TestBed.configureTestingModule({
+    TestBed.configureTestingModule({
       imports: [ExperiencesComponent],
-      providers: [
-        { provide: ExperienceService, useValue: experienceServiceMock },
-        provideRouter([]),
-      ],
-    }).compileComponents();
+      providers: [provideRouter([])],
+    });
+    TestBed.overrideComponent(ExperiencesComponent, {
+      set: {
+        providers: [
+          { provide: EXPERIENCES_SERVICE, useValue: experienceServiceMock },
+        ],
+      },
+    });
+    await TestBed.compileComponents();
 
     fixture = TestBed.createComponent(ExperiencesComponent);
     component = fixture.componentInstance;

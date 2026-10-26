@@ -1,8 +1,12 @@
+import { signal } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { of } from 'rxjs';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EducationService } from '../../services/education.service';
+import {
+  EDUCATION_REPOSITORY,
+  EducationRepository,
+} from '../../repositories/Education.repository';
 import { EducationComponent } from './education.component';
 
 describe('EducationComponent', () => {
@@ -15,17 +19,21 @@ describe('EducationComponent', () => {
       getEducationList: jest.fn().mockReturnValue(of({ formation: [], certificates: [] })),
       formationList$: of([]),
       certificateList$: of([]),
-      loading$: of(false),
-    } as unknown as jest.Mocked<EducationService>;
+      loading: signal(false),
+    } satisfies EducationRepository;
 
-    // Configura o componente standalone com roteamento e serviço mockados.
-    await TestBed.configureTestingModule({
+    TestBed.configureTestingModule({
       imports: [EducationComponent],
-      providers: [
-        { provide: EducationService, useValue: educationServiceMock },
-        provideRouter([]),
-      ],
-    }).compileComponents();
+      providers: [provideRouter([])],
+    });
+    TestBed.overrideComponent(EducationComponent, {
+      set: {
+        providers: [
+          { provide: EDUCATION_REPOSITORY, useValue: educationServiceMock },
+        ],
+      },
+    });
+    await TestBed.compileComponents();
 
     fixture = TestBed.createComponent(EducationComponent);
     component = fixture.componentInstance;

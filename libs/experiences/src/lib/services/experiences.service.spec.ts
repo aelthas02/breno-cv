@@ -37,22 +37,17 @@ describe('ExperienceService', () => {
     ];
 
     let result: unknown;
-    let loadingState: boolean | undefined;
-
-    service.loading$.subscribe((value) => {
-      loadingState = value;
-    });
-
     service.getExperienceList().subscribe((experiences) => {
       result = experiences;
     });
 
+    expect(service.loading()).toBe(true);
     const request = httpMock.expectOne('https://breno-cv-server.vercel.app/experiences');
     expect(request.request.method).toBe('GET');
     request.flush(mockExperiences);
 
     expect(result).toEqual(mockExperiences);
-    expect(loadingState).toBe(false);
+    expect(service.loading()).toBe(false);
     service.experienceList$.subscribe((experiences) => {
       expect(experiences).toEqual(mockExperiences);
     });
