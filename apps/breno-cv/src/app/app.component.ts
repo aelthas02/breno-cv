@@ -63,5 +63,10 @@ export class AppComponent {
       content:
         'Frontend, Angular, RxJs, Signals, Nx, Storybook'
     });
+    this.meta.updateTag({
+      name: 'image',
+      content:
+        'https://breno-cv.vercel.app/assets/img/profile-img.jpg'
+    });
   }
 }
